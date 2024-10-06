@@ -113,6 +113,16 @@
                     },
                     title: {
                         display: false,
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (tooltipItem) {
+                                const label = tooltipItem.label || '';
+                                const value = tooltipItem.raw.toFixed(2);
+
+                                return `${label}: ${value}%`;
+                            }
+                        }
                     }
                 }
             },

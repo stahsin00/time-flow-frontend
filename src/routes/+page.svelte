@@ -105,7 +105,7 @@
   
   <section class="hero">
     <h1>Regain Your Sense of Time</h1>
-    <p>TimeFlow helps you live in the moment without relying on your smartphone. Track your day, stay productive, and be present.</p>
+    <p>Put down your phone and focus on whats important to you.</p>
   
     <div class="cta-buttons">
       <!-- <button class="cta-button" on:click={toggleVideo}>
@@ -126,12 +126,12 @@
   
     <div class="features">
       <div>
-        <h3>Track Time Effortlessly</h3>
-        <p>No need to look at your phone to know what time it is. Focus on your work, and TimeFlow will remind you.</p>
+        <h3>Track where you spend your time</h3>
+        <p>Focus on your work and keep your phone screen down.</p>
       </div>
       <div>
         <h3>Be More Productive</h3>
-        <p>Set time goals, and let TimeFlow guide you through the day without the need for constant checking.</p>
+        <p>Review how and where you spend your time to increase your level of productivity.</p>
       </div>
       <div>
         <h3>Stay Mindful</h3>
@@ -139,7 +139,7 @@
       </div>
     </div>
   </section>
-  
+<!--   
   <section class="extended-section">
     <h2>Why Choose TimeFlow?</h2>
     <p>
@@ -152,7 +152,7 @@
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut magna nec nisi facilisis lacinia. Quisque interdum mauris ut lectus fringilla, vel gravida libero luctus. Vestibulum consectetur, risus ut malesuada sodales, orci nunc viverra sem, sit amet viverra mauris lacus at metus. Praesent at libero nec neque commodo accumsan at et eros. Nam ut tincidunt dui. Cras porttitor mi vel lacus cursus, nec pulvinar eros sagittis.
     </p>
-  </section>
+  </section> -->
 
   <Footer/>
   

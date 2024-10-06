@@ -6,6 +6,7 @@
 	import AdviceCard from '../../lib/components/AdviceCard.svelte';
 	import PieChart from '../../lib/components/PieChart.svelte';
 	import BarChart from '../../lib/components/BarChart.svelte';
+	import Mood from '../../lib/components/Mood.svelte';
 	import Footer from '../../lib/components/Footer.svelte';
 
 	let selection = 'D';
@@ -29,7 +30,7 @@
 <main>
 	<!-- Big text component (placeholder for now) -->
 	<BigText eventType={eventData.event_type} eventStart={eventData.event_start} />
-
+	
 	<!-- Placeholder for graph and pie chart components -->
 	<Graph />
 
@@ -38,7 +39,7 @@
 
 	<!-- <Stats {selection}/> -->
 	<div>
-		<span>Broken down by category: </span>
+		<span>Broken Down by Time Period: </span>
 		<br />
 		<div id="piechartdiv">
 			<Nav bind:selection />
@@ -48,9 +49,11 @@
 		</div>
 	</div>
 
+	<Mood/>
+
 	<!-- Advice cards -->
 	 <div>
-		<span>Advice for you: </span>
+		<span>Advice For You: </span>
 		<br />
 		<section class="advice-section">
 			{#each adviceList as advice}
@@ -58,6 +61,7 @@
 			{/each}
 		</section>
 	 </div>
+
 	
 </main>
 
@@ -113,5 +117,10 @@
 		border: 3px solid black;
 		border-radius: 5px;
 		margin-top: 5px;
+	}
+	:global(body) {
+		/* this will apply to <body> */
+		margin: 0;
+		padding: 0;
 	}
 </style>

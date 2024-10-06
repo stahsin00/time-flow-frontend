@@ -45,10 +45,11 @@
 		max-height: 2.5rem;
 	}
 
-	.heading {
+	div.heading {
 		font-size: 2rem;
 		font-weight: bold;
 		padding-left: 0.5rem;
 		font-family: Arial, sans-serif;
+        text-decoration: none;
 	}
 </style>

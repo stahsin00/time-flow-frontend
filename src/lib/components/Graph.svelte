@@ -213,7 +213,7 @@
 
 <!-- Canvas wrapper for the chart -->
 <div id="graphdiv">
-	<span> Last week at a glance: </span>
+	<span> Last Week at a Glance: </span>
 	<br />
 	<div class="canvasWrapper">
 		<canvas bind:this={canvas}></canvas>

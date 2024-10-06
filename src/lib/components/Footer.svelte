@@ -6,10 +6,10 @@
   <footer class="footer">
     <div class="footer-content">
       <div class="links">
-        <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/stahsin00/time-flow-frontend" target="_blank" rel="noopener noreferrer">
           GitHub
         </a>
-        <a href="https://devpost.com/your-profile" target="_blank" rel="noopener noreferrer">
+        <a href="https://devpost.com/software/timeflow-u3hjr0" target="_blank" rel="noopener noreferrer">
           Devpost
         </a>
       </div>
