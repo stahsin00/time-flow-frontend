@@ -1,5 +1,5 @@
 <script>
-	import { onMount, afterUpdate } from 'svelte';
+	import { onMount } from 'svelte';
 	import { Chart, TimeScale, BarController, BarElement } from 'chart.js';
 	import 'chartjs-adapter-date-fns'; // Adapter for handling dates in Chart.js
 	import { getLast24Hours } from '../firebase';
@@ -8,7 +8,6 @@
 	Chart.register(TimeScale, BarController, BarElement);
 
 	let chartCanvas;
-	let chart; // Keep a reference to the chart object
 	let events = [];
 	let unsubscribe;
 
@@ -33,8 +32,9 @@
 
 	onMount(async () => {
 		unsubscribe = await listenForDocument(docPath, async (event) => {
+			const ctx = chartCanvas.getContext('2d');
+
 			let querySnapshot = await getLast24Hours();
-			events = []; // Reset events before adding new ones
 			querySnapshot.docs.forEach((doc) => {
 				let e_data = doc.data();
 				events.push({
@@ -48,25 +48,10 @@
 
 			console.log('EVENTS', events);
 
-			// Draw the chart with initial data
-			drawChart();
-		});
-	});
+			const now = new Date();
+			const timeRange = new Date(now.getTime() - selectedTime * 60 * 1000);
 
-	// Function to draw or update the chart
-	function drawChart() {
-		const now = new Date();
-		const timeRange = new Date(now.getTime() - selectedTime * 60 * 1000); // Calculate the new time range
-
-		// If the chart already exists, update its data
-		if (chart) {
-			chart.options.scales.x.min = timeRange;
-			chart.options.scales.x.max = now;
-			chart.update();
-		} else {
-			// If the chart doesn't exist, create a new one
-			const ctx = chartCanvas.getContext('2d');
-			chart = new Chart(ctx, {
+			const chart = new Chart(ctx, {
 				type: 'bar',
 				data: {
 					labels: events.map((e) => e.data), // This can be the event type or description
@@ -110,14 +95,16 @@
 					parsing: {
 						xAxisKey: 'x',
 						yAxisKey: 'y'
+					},
+					onBeforeUpdate: () => {
+						chart.data.datasets[0].barThickness = events.map((e) =>
+							getBarThickness((e.end - e.start) / (60 * 1000))
+						);
 					}
 				}
 			});
-		}
-	}
-
-	// Watch for changes to `selectedTime` and redraw the chart
-	$: selectedTime, drawChart();
+		});
+	});
 
 	// Helper function to handle changes in the dropdown
 	function handleTimeChange(event) {
